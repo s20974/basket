@@ -1,0 +1,19 @@
+<div class="popup" id="modal_edit_team">
+    <div class="top">
+        <h2><%= __('teams.form.edit.title') %></h2>
+        <label for="player_edit" class="fas fa-times" data-modal-close></label>
+    </div>
+
+    <form class="form" name="edit_team_form" id="edit_team_form" onsubmit="return validateTeamEditForm(this)" method="post">
+        <div class="form-inner" id="form-inner">
+            <input type="text" placeholder="<%= __('teams.info.title') %>" name="title" id = "team_title_edit" onchange="removeErrorEditForm(this)">
+            <input type="text" placeholder="<%= __('teams.info.city') %>" name="city" id = "team_city_edit" onchange="removeErrorEditForm(this)">
+            <input type="text" placeholder="<%= __('teams.info.adress') %>" name="adress" id = "team_adress_edit" onchange="removeErrorEditForm(this)">
+            <input type="text" placeholder="<%= __('teams.info.short_name') %>" name="short_title" id="team_short_title_edit" onchange="removeErrorEditForm(this)">
+        </div>
+        <div class="line"></div>
+        <div class="errors_info" id="errors_info_edit" style="font-size: 12px;"></div><br>
+        <div class="errors_info" id="errors_info_edit_sn" style="font-size: 12px;"></div>
+        <input type="submit" id="saveTeamEdit" class="close-btn" value="<%= __('teams.form.edit.save') %>"></input>
+    </form>
+</div>

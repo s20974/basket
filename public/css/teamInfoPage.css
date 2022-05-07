@@ -1,0 +1,129 @@
+a{
+	text-decoration: none;
+}
+
+.content{
+	padding-top: 10vh;
+	width: 70vw;
+	margin: 0 auto;
+}
+
+.content .team_logo img{
+	float: left;
+	width: 25vw;
+}
+
+.content .team_info{
+	width: 50%;
+	float: right;
+	margin-top: 30px;
+}
+
+.content .team_info .tean_name{
+	font-size: 35px;
+	color: #eba93f;
+}
+
+.content .team_info .tean_name span{
+	font-size: 20px;
+}
+
+.content .team_info .team_city{
+	font-size: 20px;
+	color: #242839;
+	margin-left: 20px;
+}
+
+.content .team_info .team_city span{
+	color: #404559;
+}
+
+.content .team_players .players {
+	margin-top: 400px;
+	width: 100%;
+	border-collapse: separate;
+}
+
+.content .team_players .players thead th {
+	font-weight: bold;
+	text-align: left;
+	border: none;
+	color: white;
+	padding: 10px 15px;
+	background: #242839;
+	font-size: 14px;
+
+}
+.content .team_players .players tr th:first-child, .table tr td:first-child {
+	border-left: 1px solid #ddd;
+}
+.content .team_players .players tr th:last-child, .table tr td:last-child {
+	border-right: 1px solid #ddd;
+}
+.content .team_players .players thead tr th:first-child {
+	border-radius: 20px 0 0 0;
+}
+.content .team_players .players thead tr th:last-child {
+	border-radius: 0 20px 0 0;
+}
+.content .team_players .players tbody td {
+	text-align: left;
+	border: none;
+	padding: 10px 15px;
+	font-size: 14px;
+	vertical-align: top;
+
+}
+.content .team_players .players tbody tr:nth-child(even) {
+	background: #F8F8F8;
+}
+.content .team_players .players tbody tr:last-child td{
+	border-bottom: 1px solid #ddd;
+}
+.content .team_players .players tbody tr:last-child td:first-child {
+	border-radius: 0 0 0 20px;
+}
+.content .team_players .players tbody tr:last-child td:last-child {
+	border-radius: 0 0 20px 0;
+}
+
+.player_delete{
+	display: block;
+	width: 100px;
+	height: 35px;
+	background-color: none;
+	color: #ff5959;
+	border-radius: .5rem;
+	font-weight: 600;
+	border: 2px solid #ff5959;
+	transition: .2s;
+	cursor: pointer;
+	float: left;
+	background-color: white;
+}
+
+.player_delete:hover{
+	background-color: #ff5959;
+	color: #242839;
+}
+
+
+.player_more_info{
+	width: 95px;
+	height: 30px;
+	color: #ffa100;
+	border: 2px solid #ffa100;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: .5rem;
+	transition: .2s;
+	float: right;
+	margin-left: -85px;
+}
+
+.player_more_info:hover{
+	background-color: #ffa100;
+	color: #242839;
+	border-color: #ffa100;
+}

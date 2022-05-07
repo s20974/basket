@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Players</title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/playersPage.css">
+	<link rel="stylesheet" type="text/css" href="../css/popup.css">
+	<link rel="stylesheet" type="text/css" href="../css/formStyle.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+	<link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+</head>
+<body>
+	<input type="checkbox" id="check">
+	<div class="header">
+		<a href="#"><img src="../img/logo.png"></a>
+		<div class="nav">
+			<a href="../index.html">Home</a>
+			<a href="#">Players</a>
+			<a href="teams.html">Clubs</a>
+		</div>
+		<label for="check">
+			<i class="fas fa-bars menu-button"></i>
+			<i class="fas fa-times close-button"></i>
+		</label>
+	</div>
+
+
+	<div class=""></div>
+	
+	<input type="checkbox" id="player_edit">
+
+	<div class="content">
+		<div class="player_edit_buttons">
+			<button type="button" class="add_button">
+				<span class="button__text">Add Player</span>
+				<span class="button__icon">
+					<i class="fas fa-plus"></i>
+				</span>
+			</button>
+		</div>
+
+		<div class="container" id="container_1">
+			<div class="player">
+				<img src="../img/lebron.png" class="player_img">
+				<div class="player_data">
+					<h1 class="player_title">LeBron James #6</h1>
+					<span class="player_club">LosAngeles Lakers</span>
+					<p class="player_info">+48000000; <br> Salary: $38mln; <br> Days at the club: 789;</p>
+					<a href="#" class="">
+						<div class="player_more_info">
+							More Info
+						</div>
+					</a>
+					<label for="player_edit">
+						<span class="player_button">Edit</span>
+					</label>
+					<span class="player_delete">Delete</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="br_un"></div>
+	</div>
+
+	<footer>
+		<div class="footer">
+			Oleksii Bondar s20974©
+		</div>
+	</footer>
+
+
+	<div class="popup">
+		<div class="top">
+			<h2>Modal</h2>
+			<label for="player_edit" class="fas fa-times"></label>
+		</div>
+
+		<form class="form-player">
+			<div class="form-inner">
+				<input type="text" placeholder="Name" required>
+				<input type="text" placeholder="Numer" required>
+				<input type="text" placeholder="Numer telefonu" required>
+				<input type="text" placeholder="Salary" required>
+
+				<select id="teams" name="teams">
+				  <option value="lal" >LAL</option>
+				  <option value="cle">CLE</option>
+				  <option value="gsw">GSW</option>
+				</select>
+			</div>
+		</form>
+					
+		</form>
+		<div class="line"></div>
+		<label for="player_edit" class="close-btn">Save</label>
+	</div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/css/popup.css">
+	<link rel="stylesheet" type="text/css" href="/css/teamInfoPage.css">
+	<link rel="stylesheet" type="text/css" href="/css/formStyle.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+	<link rel="shortcut icon" href="/img/logo.png" type="image/x-icon">
+</head>
+<body>
+
+	<%- include('../../main_fragments/menu.ejs') %>
+
+	<div class="content">
+		<div class="team_logo">
+			<img src="/img/teams/<%= team._id %>.png">
+		</div>
+		<div class="team_info">
+			<p class="tean_name">
+				<%= team.title %> <span> - <%= team.short_title %></span>
+			</p>
+			<p class="team_city">
+				- <%= __('teams.info.city') %>: <span><%= team.city %>;</span>
+			</p>
+			<p class="team_city">
+				- <%= __('teams.info.adress') %>: <span><%= team.adress %>;</span>
+			</p><br>
+			<% if(loggedUser) { %>
+				<div class="team_edit_buttons">
+					<button type="button" class="add_button" data-modal-target="#modal_edit_team">
+						<span class="button__text"><%= __('teams.form.edit.title') %></span>
+						<span class="button__icon">
+							<i class="fas fa-edit"></i>
+						</span>
+					</button>
+				</div>
+			<% } %>
+		</div>
+
+		<div class="team_players">
+			<table class="players">
+				<thead>
+					<tr>
+						<th>Img</th>
+						<th><%= __('player.info.name') %></th>
+						<th><%= __('player.info.surname') %></th>
+						<th><%= __('player.info.phone') %></th>
+						<th><%= __('player.list.number') %></th>
+						<th><%= __('player.list.salary') %></th>
+						<th><%= __('player.list.days_in_team') %></th>
+						<th><%= __('player.list.action') %></th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<% for (let team_player of team.team_player) { %>
+						<tr>
+							<th><img src="/img/players/<%= team_player.player._id %>.png" width="70px"></th>
+							<td><%= team_player.player.name %></td>
+							<td><%= team_player.player.surname %></td>
+							<td><%= team_player.player.phone %></td>
+							<td><%= team_player.player_number %></td>
+							<td><%= team_player.salary %>$</td>
+							<td><%= team_player.days_in_team %></td>
+							<td>
+								<button class="player_delete" id="<%= team_player.player._id %>" data-modal-target="#delete_team"><%= __('list.actions.delete') %></button>
+								<a href="/players/info/<%= team_player.player._id %>" class="">
+									<div class="player_more_info">
+										<%= __('list.actions.details') %>
+									</div>
+								</a>
+							</td>
+						</tr>
+					<% } %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="popup" id="modal_edit_team">
+		<div class="top">
+			<h2><%= __('teams.form.edit.title') %></h2>
+			<label for="player_edit" class="fas fa-times" data-modal-close></label>
+		</div>
+
+		<form class="form" name="edit_team_form" id="edit_team_form" onsubmit="return validateTeamEditForm(this)" action="/teams/info/update/<%= team._id %> " method="post">
+			<div class="form-inner" id="form-inner">
+				<input type="text" placeholder="<%= __('teams.info.title') %>" name="title" value="<%= team.title %>" onchange="removeErrorEditForm(this)">
+				<input type="text" placeholder="<%= __('teams.info.city') %>" name="city" value="<%= team.city %>" onchange="removeErrorEditForm(this)">
+				<input type="text" placeholder="<%= __('teams.info.adress') %>" name="adress" value="<%= team.adress %>" onchange="removeErrorEditForm(this)">
+				<input type="text" placeholder="<%= __('teams.info.short_name') %>" name="short_title" value="<%= team.short_title %>" id="short_name" onchange="removeErrorEditForm(this)">
+			</div>
+			<div class="line"></div>
+			<div class="errors_info" id="errors_info_edit" style="font-size: 12px;"></div><br>
+			<div class="errors_info" id="errors_info_edit_sn" style="font-size: 12px;"></div>
+			<input type="submit" id="saveTeamEdit" class="close-btn" value="<%= __('teams.form.edit.save') %>"></input>
+		</form>
+	</div>
+
+	<input type="hidden" id="_id" value="<%= team._id %>">
+
+	<%- include('./elements/popup_delete.ejs') %>
+	<div id="overlay"></div>
+
+	<script src="/scripts/team_info.js"></script>
+</body>
+</html>

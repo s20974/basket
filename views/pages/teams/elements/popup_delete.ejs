@@ -1,0 +1,9 @@
+<div class="popup_delete" id="delete_team" data-modal-close>
+    <div class="top">
+        <h2><%= __('delete.title') %></h2>
+    </div>
+    <form class="form" name="delete_team_form" id="delete_team_form" method="get">
+        <input type="submit" id="delete_yes" class="delete_yes" value="<%= __('delete.yes') %>"></input>
+        <input type="button" id="delete_no" class="delete_no" value="<%= __('delete.no') %>" onclick="closeModal(this)"></input>
+    </form>
+</div>

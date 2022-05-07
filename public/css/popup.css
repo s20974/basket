@@ -1,0 +1,146 @@
+.popup{
+	opacity: 0;
+	visibility: hidden;
+	border-radius: 10px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 400px;
+	height: 400px;
+	background-color: white;
+	box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+	transition: .3s;
+	z-index: 99;
+}
+
+
+.popup.active{
+	opacity: 1;
+	visibility: visible;
+}
+
+.popup .top{
+	height: 68px;
+	background-color: #ffa100;
+	overflow: hidden;
+	border-radius: 10px 10px 0 0;
+}
+
+.popup .top h2{
+	color: white;
+	padding-left: 32px;
+	font-weight: normal;
+}
+
+.fa-times{
+	position: absolute;
+	right: 20px;
+	top: 25px;
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+	cursor: pointer;
+}
+.popup p {
+	padding-top: 10px;
+	font-size: 19px;
+	color: white;
+	text-align: center;
+}
+
+
+.popup .close-btn{
+	position: absolute;
+	bottom: 12px;
+	right: 25px;
+	border-radius: 5px;
+	color: white;
+	background-color: #ffa100;
+	padding: 8px 10px;
+	font-size: 18px;
+	cursor: pointer;
+	border: none;
+}
+
+#overlay{
+	position: fixed;
+	opacity: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	pointer-events: none;
+}
+
+#overlay.active{
+	pointer-events: all;
+	opacity: 1;
+}
+
+.popup_delete{
+	opacity: 0;
+	visibility: hidden;
+	border-radius: 10px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 400px;
+	height: 150px;
+	background-color: white;
+	box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+	transition: .3s;
+	z-index: 99;
+}
+
+.popup_delete.active{
+	opacity: 1;
+	visibility: visible;
+}
+
+.popup_delete .top{
+	height: 68px;
+	background-color: #ff5959;
+	overflow: hidden;
+	border-radius: 10px 10px 0 0;
+	text-align: center;
+}
+
+.popup_delete .top h2{
+	color: white;
+	padding-left: 32px;
+	font-weight: normal;
+	margin-left: -7%;
+}
+
+.popup_delete p {
+	padding-top: 10px;
+	font-size: 19px;
+	color: white;
+	text-align: center;
+}
+
+.popup_delete .delete_yes{
+	border-radius: 5px;
+	color: white;
+	background-color: #ff5959;
+	padding: 8px 10px;
+	font-size: 18px;
+	width: 100px;
+	cursor: pointer;
+	border: none;
+	margin-left: 25%;
+}
+
+.popup_delete .delete_no{
+	border-radius: 5px;
+	color: white;
+	background-color: #53a669;
+	padding: 8px 10px;
+	font-size: 18px;
+	cursor: pointer;
+	width: 100px;
+	border: none;
+}

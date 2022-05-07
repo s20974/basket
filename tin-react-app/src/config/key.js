@@ -1,0 +1,1 @@
+module.exports = {secret: 'vey_secret_key'}

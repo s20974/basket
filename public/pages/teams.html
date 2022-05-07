@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/popup.css">
+	<link rel="stylesheet" type="text/css" href="../css/formStyle.css">
+	<link rel="stylesheet" type="text/css" href="../css/teamsPage.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+	<link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
+</head>
+<body>
+
+	<input type="checkbox" id="check">
+	<div class="header">
+		<a href="#"><img src="../img/logo.png"></a>
+		<div class="nav">
+			<a href="../index.html">Home</a>
+			<a href="players.html">Players</a>
+			<a href="#">Clubs</a>
+		</div>
+		<label for="check">
+			<i class="fas fa-bars menu-button"></i>
+			<i class="fas fa-times close-button"></i>
+		</label>
+	</div>
+
+
+	<input type="checkbox" id="player_edit">
+
+	<div class="content">
+		<div class="team_edit_buttons">
+			<button type="button" class="add_button" data-modal-target="#modal_add_teams">
+				<span class="button__text">Add Team</span>
+				<span class="button__icon">
+					<i class="fas fa-plus"></i>
+				</span>
+			</button>
+		</div>
+
+		<div class="container" id="container_1">
+			<div class="team">
+				<img src="../img/lakers_logo.png" class="player_img">
+				<div class="team_data">
+					<h1 class="team_title">Los-Angeles Lakers</h1>
+					<span class="team_short_name">LaL</span>
+					<p class="team_info">City: Los-Angeles; <br> Adress: los 12;</p>
+					<a href="team_info.html" class="">
+						<div class="team_more_info">
+							More Info
+						</div>
+					</a>
+					<label id="123" data-modal-target="#modal_edit_team">
+						<input type="hidden" name="team_id" value="123">
+						<span class="team_button">Edit</span>
+					</label>
+					<span id="123" class="team_delete" data-modal-target="#delete_team">Delete</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="br_un"></div>
+	</div>
+
+	<div class="popup" id="modal_edit_team">
+		<div class="top">
+			<h2>Modal</h2>
+			<label for="player_edit" class="fas fa-times" data-modal-close></label>
+		</div>
+
+		<form class="form" name="edit_team_form" id="edit_team_form" onsubmit="return validateTeamEditForm(this)" method="post">
+			<div class="form-inner" id="form-inner">
+				<input type="text" placeholder="Name" onchange="removeErrorEditForm(this)">
+				<input type="text" placeholder="City" onchange="removeErrorEditForm(this)">
+				<input type="text" placeholder="Adress" onchange="removeErrorEditForm(this)">
+				<input type="text" placeholder="Short Name" id="short_name" onchange="removeErrorEditForm(this)">
+			</div>
+			<div class="line"></div>
+			<div class="errors_info" id="errors_info_edit" style="font-size: 12px;"></div><br>
+			<div class="errors_info" id="errors_info_edit_sn" style="font-size: 12px;"></div>
+			<input type="submit" id="saveTeamEdit" class="close-btn" value="Save"></input>
+		</form>
+	</div>
+
+
+	<div class="popup" id="modal_add_teams" style="height: 500px;">
+		<div class="top">
+			<h2>Add Team</h2>
+			<label class="fas fa-times" data-modal-close></label>
+		</div>
+
+		<form class="form" name="add_team_form" id="add_team_form"  onsubmit="return validateTeamAddForm(this)" method="post">
+			<div class="form-inner"  id="form-inner">
+				<input type="text" placeholder="Name" onchange="removeErrorAddForm(this)">
+				<input type="text" placeholder="City" onchange="removeErrorAddForm(this)">
+				<input type="text" placeholder="Adress" onchange="removeErrorAddForm(this)">
+				<input type="text" placeholder="Short Name"  id="short_name" onchange="removeErrorAddForm(this)">
+				<input type="file" placeholder="Team Logo" id="team_logo" onchange="removeErrorAddForm(this)" multiple accept="image/png">
+			</div>
+
+			<div class="line"></div>
+			<div class="errors_info" id="errors_info_add" style="font-size: 12px;"></div><br>
+			<div class="errors_info" id="errors_info_add_sn" style="font-size: 12px;"></div><br>
+			<div class="errors_info" id="errors_info_add_image" style="font-size: 12px;"></div>
+			<input type="submit" class="close-btn" value="Save"></input>
+		</form>
+					
+	</div>
+
+	<div class="popup_delete" id="delete_team" data-modal-close>
+		<div class="top">
+			<h2>Are you sure ?</h2>
+		</div>
+		<form class="form" name="delete_team_form" id="delete_team_form" method="post">
+			<input type="submit" id="delete_yes" class="delete_yes" value="Yes"></input>
+			<input type="submit" id="delete_no" class="delete_no" value="No"></input>
+		</form>
+	</div>
+
+
+	<div id="overlay"></div>
+
+	<script src="../scripts/teams.js"></script>
+</body>
+</html>

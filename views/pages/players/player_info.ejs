@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Player Info </title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/css/popup.css">
+	<link rel="stylesheet" type="text/css" href="/css/teamInfoPage.css">
+	<link rel="stylesheet" type="text/css" href="/css/formStyle.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+	<link rel="shortcut icon" href="/img/logo.png" type="image/x-icon">
+</head>
+<body>
+
+	<%- include('../../main_fragments/menu.ejs') %>
+
+	<div class="content">
+		<div class="team_logo">
+			<img src="/img/players/<%= player._id %>.png">
+		</div>
+		<div class="team_info">
+			<p class="tean_name">
+				<%= player.name %> <%= player.surname %>
+			</p>
+			<p class="team_city">
+				- Phone number: <span><%= player.phone %>;</span>
+			</p><br>
+			<% if(loggedUser) { %>
+				<div class="team_edit_buttons">
+					<button type="button" id="<%= player._id %>" class="add_button" data-modal-target="#modal_edit_player">
+						<span class="button__text"><%= __('list.actions.edit') %></span>
+						<span class="button__icon">
+							<i class="fas fa-edit"></i>
+						</span>
+					</button>
+				</div>
+				<br>
+				<div class="team_edit_buttons">
+					<button type="button" id="<%= player._id %>" class="add_button" data-modal-target="#add_team">
+						<span class="button__text"><%= __('player.form.addTeamToPlayer.title') %></span>
+						<span class="button__icon">
+							<i class="fas fa-plus"></i>
+						</span>
+					</button>
+				</div>
+			<% } %>
+		</div>
+
+		<div class="team_players">
+			<table class="players">
+				<thead>
+					<tr>
+						<th><%= __('player.list.logo') %></th>
+						<th><%= __('player.list.title') %></th>
+						<th><%= __('player.list.days_in_team') %></th>
+						<th><%= __('player.list.number') %></th>
+						<th><%= __('player.list.salary') %></th>
+						<th><%= __('player.list.action') %></th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<% for (let team_player of player.team_player) { %>
+						<tr>
+							<th><img src="/img/teams/<%= team_player.team._id %>.png" width="70px"></th>
+							<td><%= team_player.team.title %></td>
+							<td><%= team_player.days_in_team %></td>
+							<td><%= team_player.player_number %></td>
+							<td><%= team_player.salary %>$</td>
+							<td>
+								<button class="player_delete" id="<%= team_player.team._id %>" data-modal-target="#delete_team"><%= __('list.actions.delete') %></button>
+								<a href="/teams/info/<%= team_player.team._id %>" class="">
+									<div class="player_more_info">
+										<%= __('list.actions.details') %>
+									</div>
+								</a>
+							</td>
+						</tr>
+					<% } %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<input type="hidden" id="_id" value="<%= player._id %>">
+
+	<div class="popup" id="modal_edit_player" style="height: 500px;">
+		<div class="top">
+			<h2>Edit Player</h2>
+			<label class="fas fa-times" data-modal-close></label>
+		</div>
+	
+		<form class="form" name="edit_player_form" id="edit_player_form" onsubmit="return validatePlayerEditForm(this)" action="/players/info/update/<%= player._id %>" method="post">
+			<div class="form-inner"  id="form-inner">
+				<input type="text" placeholder="<%= __('player.info.name') %>" name="name" value="<%= player.name %>" id="player_edit_name" onchange="removeErrorAddForm(this)">
+				<input type="text" placeholder="<%= __('player.info.surname') %>" name="surname" value="<%= player.surname %>" id="player_edit_surname" onchange="removeErrorAddForm(this)">
+				<input type="text" placeholder="<%= __('player.info.phone') %>" name="phone" value="<%= player.phone %>" id="player_edit_phone" onchange="removeErrorAddForm(this)">
+			</div>
+	
+			<div class="line"></div>
+			<div class="errors_info" id="errors_info" style="font-size: 12px;"></div><br>
+			<input type="submit" class="close-btn" value="Save"></input>
+		</form>
+					
+	</div>
+
+	<div class="popup" id="add_team">
+		<div class="top">
+			<h2>Add Team</h2>
+			<label class="fas fa-times" data-modal-close></label>
+		</div>
+		<form class="form" name="delete_team_form" id="delete_team_form" action="/players/team/add" method="post">
+
+			<div class="form-inner">
+				<input type="text" placeholder="<%= __('player.list.salary') %>" name="salary" onchange="removeErrorAddForm(this)">
+				<input type="text" placeholder="<%= __('player.list.number') %>" name="player_number" onchange="removeErrorAddForm(this)">
+				<input type="text" placeholder="<%= __('player.list.days_in_team') %>" name="days_in_team" onchange="removeErrorAddForm(this)">
+				<input type="hidden" name="player_id" value="<%= player._id %>">
+				<select id="teams" name="team_id">
+					
+					<% for(let team of allTeams) { %>
+						<option value="<%= team._id %>" > ><%= team.short_title %></option>
+					<% } %>
+				  
+				</select>
+
+			</div>
+			<input type="submit" class="close-btn" value="Add"></input>
+		</form>
+	</div>
+	
+	<%- include('./elements/popup_delete.ejs') %>
+	<div id="overlay"></div>
+
+	<script src="/scripts/player_info.js"></script>
+</body>
+</html>

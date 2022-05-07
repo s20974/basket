@@ -1,0 +1,84 @@
+{
+	"main-page": {
+		"content": "Домашняя Страница"
+	},
+	"nav": {
+		"main-page": "Главная",
+		"player": "Игроки",
+		"teams": "Команды"
+	},
+	"login": {
+		"phone": "Номер телефона",
+		"password": "Пароль",
+		"login": "Войти",
+		"loginError": "Неправильный номер или пароль"
+	},
+	"list": {
+		"actions": {
+			"details": "Больше информации",
+			"edit": "Редактировать",
+			"delete": "Удалить"
+		}
+	},
+	"player": {
+		"list": {
+			"logo": "Лого",
+			"title": "Команда",
+			"days_in_team": "Дней в команде",
+			"number": "Номер",
+			"salary": "Зарплата",
+			"action": "Действие"
+		},
+		"form": {
+			"addPlayer": {
+				"title": "Добавить Игрока",
+				"save": "Сохранить"
+			},
+			"addTeamToPlayer": {
+				"title": "Добавить Команду",
+				"add": "Добавить"
+			},
+			"edit": {
+				"title": "Редактировать Игрока",
+				"save": "Сохранить"
+			}
+		},
+		"info": {
+			"phone": "Номер",
+			"name": "Имя",
+			"surname": "Фамилия"
+		},
+		"errors": {
+			"plintm": "Игрок уже в команде"
+		}
+	},
+	"teams": {
+		"info": {
+			"title": "Название",
+			"city": "Город",
+			"adress": "Адресс",
+			"short_name": "Корткое название",
+			"short_title": "teams.info.short_title"
+		},
+		"form": {
+			"addTeam": {
+				"title": "Добавить команду",
+				"save": "Сохранить"
+			},
+			"edit": {
+				"title": "Редактировать команду",
+				"save": "Сохранить"
+			}
+		},
+		"from": {
+			"addTeam": {
+				"title": "teams.from.addTeam.title"
+			}
+		}
+	},
+	"delete": {
+		"title": "Уверен ?",
+		"yes": "эс",
+		"no": "ноу"
+	}
+}

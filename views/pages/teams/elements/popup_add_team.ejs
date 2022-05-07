@@ -1,0 +1,23 @@
+<div class="popup" id="modal_add_teams" style="height: 500px;">
+    <div class="top">
+        <h2><%= __('teams.form.addTeam.title') %></h2>
+        <label class="fas fa-times" data-modal-close></label>
+    </div>
+
+    <form class="form" name="add_team_form" id="add_team_form" onsubmit="return validateTeamAddForm(this)" method="post" action="/teams/add">
+        <div class="form-inner"  id="form-inner">
+            <input type="text" placeholder="<%= __('teams.info.title') %>" name="title" onchange="removeErrorAddForm(this)">
+            <input type="text" placeholder="<%= __('teams.info.city') %>" name="city" onchange="removeErrorAddForm(this)">
+            <input type="text" placeholder="<%= __('teams.info.adress') %>" name="adress" onchange="removeErrorAddForm(this)">
+            <input type="text" placeholder="<%= __('teams.info.short_name') %>" name="short_title"  id="short_name" onchange="removeErrorAddForm(this)">
+            <input type="file" placeholder="Logo" id="team_logo" onchange="removeErrorAddForm(this)" multiple accept="image/png">
+        </div>
+
+        <div class="line"></div>
+        <div class="errors_info" id="errors_info_add" style="font-size: 12px;"></div><br>
+        <div class="errors_info" id="errors_info_add_sn" style="font-size: 12px;"></div><br>
+        <div class="errors_info" id="errors_info_add_image" style="font-size: 12px;"></div>
+        <input type="submit" class="close-btn" value="Save"></input>
+    </form>
+                
+</div>

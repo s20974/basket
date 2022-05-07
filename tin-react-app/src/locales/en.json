@@ -1,0 +1,78 @@
+{
+	"main-page": {
+		"content": "Home Page"
+	},
+	"nav": {
+		"mainPage": "Home",
+		"player": "Players",
+		"teams": "Teams"
+	},
+	"login": {
+		"phone": "Phone number",
+		"password": "Password",
+		"login": "Login",
+		"loginError": "Wrong phone number or password"
+	},
+	"list": {
+		"actions": {
+			"details": "More Info",
+			"edit": "Edit",
+			"delete": "Delete"
+		}
+	},
+	"player": {
+		"info": {
+			"phone": "Phone Number",
+			"name": "Name",
+			"surname": "Surname"
+		},
+		"list": {
+			"logo": "Logo",
+			"title": "Title",
+			"days_in_team": "Days In Team",
+			"number": "Number",
+			"salary": "Salary",
+			"action": "Action"
+		},
+		"form": {
+			"addPlayer": {
+				"title": "Add Player",
+				"save": "save"
+			},
+			"addTeamToPlayer": {
+				"title": "Add Team",
+				"add": "Add"
+			},
+			"edit": {
+				"title": "Edit Player",
+				"save": "Save"
+			}
+		},
+		"errors": {
+			"plintm": "The player is already in the team"
+		}
+	},
+	"teams": {
+		"info": {
+			"title": "Title",
+			"city": "City",
+			"adress": "Adress",
+			"short_name": "Short Name"
+		},
+		"form": {
+			"addTeam": {
+				"title": "Add Team",
+				"save": "save"
+			},
+			"edit": {
+				"title": "Edit Team",
+				"save": "Save"
+			}
+		}
+	},
+	"delete": {
+		"title": "Are you sure ?",
+		"yes": "yes",
+		"no": "no"
+	}
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Teams</title>
+	<link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/css/popup.css">
+	<link rel="stylesheet" type="text/css" href="/css/formStyle.css">
+	<link rel="stylesheet" type="text/css" href="/css/teamsPage.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+	<link rel="shortcut icon" href="/public/img/logo.png" type="image/x-icon">
+</head>
+<body>
+	<%- include('../../main_fragments/menu.ejs') %>
+
+	<div class="content">
+		<% if(loggedUser) { %>
+			<div class="team_edit_buttons">
+				<button type="button" class="add_button" data-modal-target="#modal_add_teams">
+					<span class="button__text"><%= __('teams.form.addTeam.title') %></span>
+					<span class="button__icon">
+						<i class="fas fa-plus"></i>
+					</span>
+				</button>
+			</div>
+		<% } %>
+
+
+
+		<div class="container" id="container_1">
+			<% for (let team of teams) { %>
+				<div class="team">
+					<img src="/img/teams/<%= team._id %>.png" class="player_img">
+					<div class="team_data">
+						<h1 class="team_title"><%= team.title %></h1>
+						<span class="team_short_name"><%= team.short_title %></span>
+						<p class="team_info">City: <%= team.city %> <br> Adress: <%= team.adress %></p>
+						<a href="/teams/info/<%= team._id %>" class="">
+							<div class="team_more_info">
+								<%= __('list.actions.details') %>
+							</div>
+						</a>
+						<% if(loggedUser) { %>
+							<label id="<%= team._id %>" data-modal-target="#modal_edit_team">
+								<span class="team_button"><%= __('list.actions.edit') %></span>
+							</label>
+							<span id="<%= team._id %>" class="team_delete" data-modal-target="#delete_team"><%= __('list.actions.delete') %></span>
+						<% } %>
+					</div>
+				</div>
+			<% } %>
+
+
+		</div>
+
+
+		<div class="br_un"></div>
+
+	</div>
+
+	<%- include('./elements/popup_add_team.ejs') %>
+	<%- include('./elements/popup_edit_team.ejs') %>
+	<%- include('./elements/popup_delete.ejs') %>
+
+	<div id="overlay"></div>
+
+	<%- include('../../main_fragments/footer.ejs') %>
+
+	<script src="/scripts/teams.js"></script>
+
+</body>
+</html>

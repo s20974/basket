@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Home Page</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/mainPage.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/popup.css">
+ 	<link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+	<style>
+		.form .form-inner input,
+		.form .form-inner #teams
+		{
+			display: block;
+			width: 80%;
+			margin-left: 5%;
+			padding: 0 20px;
+			margin-bottom: 10px;
+			background: #E9EFF6;
+			line-height: 40px;
+			border-width: 0;
+			border-radius: 20px;
+		}
+
+		.form .form-inner input.error{
+			border: 2px solid red;
+		}
+
+		#teams{
+			height: 35px ;
+			width: 150px;
+		}
+
+		.form{
+			padding-top: 25px;
+		}
+
+		.errors_info{
+			position: fixed;
+			width: 80%;
+			color: #ff5959;
+			margin-left: 25px;
+		}
+	</style>
+</head>
+<body>
+
+    <%- include('./main_fragments/menu.ejs') %>
+
+	<div class="intro">
+		<div class="video_background">
+			<video class="video_media" src="video/videobackground.mp4" autoplay muted loop></video>
+		</div>
+		<div class="intro_content">
+			<div class="container">
+				<div class="bask">Basketball !</div>
+				<div class="und_bask">Choose your basketball club</div>
+
+			</div>
+			<div class="tag">Oleksii Bondar s20974©</div>
+		</div>
+	</div>
+    <script src="scripts/loginPopup.js"></script>
+</body>
+</html>

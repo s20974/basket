@@ -1,0 +1,33 @@
+.form .form-inner input,
+.form .form-inner #teams
+{
+	display: block;
+	width: 80%;
+	margin-left: 5%;
+	padding: 0 20px;
+	margin-bottom: 10px;
+	background: #E9EFF6;
+	line-height: 40px;
+	border-width: 0;
+	border-radius: 20px;
+}
+
+.form .form-inner input.error{
+	border: 2px solid red;
+}
+
+#teams{
+	height: 35px ;
+	width: 150px;
+}
+
+.form{
+	padding-top: 25px;
+}
+
+.errors_info{
+	position: fixed;
+	width: 80%;
+	color: #ff5959;
+	margin-left: 25px;
+}

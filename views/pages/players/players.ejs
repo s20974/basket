@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Players</title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/playersPage.css">
+	<link rel="stylesheet" type="text/css" href="../css/popup.css">
+	<link rel="stylesheet" type="text/css" href="../css/formStyle.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+	<link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+</head>
+<body>
+	<%- include('../../main_fragments/menu.ejs') %>
+
+
+	<div class=""></div>
+	
+	<input type="checkbox" id="player_edit">
+
+	<div class="content">
+		<% if(loggedUser) { %>
+		<div class="player_edit_buttons">
+			<button type="button" class="add_button" data-modal-target="#modal_add_player">
+				<span class="button__text"><%= __('player.form.addPlayer.title') %></span>
+				<span class="button__icon">
+					<i class="fas fa-plus"></i>
+				</span>
+			</button>
+		</div>
+		<% } %>
+
+		<div class="container" id="container_1">
+			<% for (let player of players) { %>
+				<div class="player">
+					<img src="/img/players/<%= player._id %>.png" class="player_img">
+					<div class="player_data">
+						<h1 class="player_title"><%= player.name %> <%= player.surname %></h1>
+						<p class="player_info"><%= __('player.info.phone') %>: <%= player.phone %>;</p>
+						<a href="/players/info/<%= player._id %>" class="">
+							<div class="player_more_info">
+								<%= __('list.actions.details') %>
+							</div>
+						</a>
+						<% if(loggedUser) { %>
+							<label id="<%= player._id %>" for="player_edit">
+								<span class="player_button" id="<%= player._id %>" data-modal-target="#modal_edit_player"><%= __('list.actions.edit') %></span>
+							</label>
+							<span class="player_delete" id="<%= player._id %>" data-modal-target="#delete_team"><%= __('list.actions.delete') %></span>
+
+						<% } %>
+					</div>
+				</div>
+			<% } %>
+
+
+		</div>
+
+		<div class="br_un"></div>
+	</div>
+
+	<div class="popup" id="modal_edit_player" style="height: 500px;">
+		<div class="top">
+			<h2>Edit Player</h2>
+			<label class="fas fa-times" data-modal-close></label>
+		</div>
+	
+		<form class="form" name="edit_player_form" id="edit_player_form" onsubmit="return validatePlayerEditForm(this)" method="post">
+			<div class="form-inner"  id="form-inner">
+				<input type="text" placeholder="<%= __('player.info.name') %>" name="name" id="player_edit_name" onchange="removeErrorAddForm(this)">
+				<input type="text" placeholder="<%= __('player.info.surname') %>" name="surname" id="player_edit_surname" onchange="removeErrorAddForm(this)">
+				<input type="text" placeholder="<%= __('player.info.phone') %>" name="phone" id="player_edit_phone" onchange="removeErrorAddForm(this)">
+			</div>
+	
+			<div class="line"></div>
+			<div class="errors_info" id="errors_info" style="font-size: 12px;"></div><br>
+			<input type="submit" class="close-btn" value="Save"></input>
+		</form>
+					
+	</div>
+
+
+
+	<div class="popup" id="modal_add_player" style="height: 500px;">
+		<div class="top">
+			<h2><%= __('player.form.addPlayer.title') %></h2>
+			<label class="fas fa-times" data-modal-close></label>
+		</div>
+	
+		<form class="form" name="edit_player_form" id="edit_player_form" onsubmit="return validatePlayerAddForm(this)" method="post" action="/players/add">
+			<div class="form-inner"  id="form-inner">
+				<input type="text" placeholder="<%= __('player.info.name') %>" name="name" id="player_edit_name" onchange="removeErrorAddForm(this)">
+				<input type="text" placeholder="<%= __('player.info.surname') %>" name="surname" id="player_edit_surname" onchange="removeErrorAddForm(this)">
+				<input type="text" placeholder="<%= __('player.info.phone') %>" name="phone" id="player_edit_phone" onchange="removeErrorAddForm(this)">
+				<input type="file" placeholder="Photo" id="player_photo" onchange="removeErrorAddForm(this)" multiple accept="image/png">
+			</div>
+	
+			<div class="line"></div>
+			<div class="errors_info" id="errors_info_add" style="font-size: 12px;"></div><br>
+			<div class="errors_info" id="errors_image" style="font-size: 12px;"></div><br>
+			<input type="submit" class="close-btn" value="Save"></input>
+		</form>
+					
+	</div>
+
+	
+	<%- include('./elements/popup_delete.ejs') %>
+	<%- include('../../main_fragments/footer.ejs') %>
+	<div id="overlay"></div>
+
+	<script src="/scripts/players.js"></script>
+</body>
+</html>

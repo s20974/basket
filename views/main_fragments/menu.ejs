@@ -1,0 +1,54 @@
+<main>
+
+    <input type="checkbox" id="check">
+    <div class="header">
+		<a href="#"><img src="/img/logo.png"></a>
+		<span style="color: white;">
+			<% if(loggedUser) { %>
+				Hello, <%= loggedUser.name = " " + loggedUser.surname %> !
+			<% } %>
+		</span>
+
+		<div class="nav">
+			
+			<a href="/"><%= __('nav.main-page') %></a>
+			<a href="/players"><%= __('nav.player') %></a>
+			<a href="/teams"><%= __('nav.teams') %></a>
+			<% if(!loggedUser) { %>
+				<a style="cursor: pointer;" data-modal-target="#login_form">Log In</a>
+			<% } else { %>
+				<a href="/logout">Log Out</a>
+			<% } %>
+		</div>
+		<div class="lang_change" style="position: absolute; left: 96vw; ">
+			<a href="/changeLang/ru" class="<%= lang == 'ru' ? 'active' : '' %>">RU</a>
+			<a href="/changeLang/en" class="<%= lang == 'en' ? 'active' : '' %>">EN</a>
+		</div>
+		<label for="check">
+			<i class="fas fa-bars menu-button"></i>
+			<i class="fas fa-times close-button"></i>
+		</label>
+	</div>
+</main>
+
+<div class="popup" id="login_form" style="z-index: 100;" style="height: 500px;">
+	<div class="top">
+		<h2>LogIn</h2>
+		<label class="fas fa-times" data-modal-close></label>
+	</div>
+
+	<form class="form" name="login" id="login" action="/login" onsubmit="return validateLoginForm(this)" method="post">
+		<div class="form-inner"  id="form-inner">
+			<input type="text" placeholder="<%= __('login.phone') %>" name="phone" id="phone_login" onchange="removeErrorLogin(this)">
+			<input type="text" placeholder="<%= __('login.password') %>" name="password" id="password_form" onchange="removeErrorLogin(this)">
+		</div>
+
+		<div class="line"></div>
+		<div class="errors_info" id="errors_info_login" style="font-size: 12px;">
+			<%= loggedUser ? loginError : '' %>
+		</div><br>
+		<input type="submit" class="close-btn" value="<%= __('login.login') %>"></input>
+	</form>			
+</div>
+
+<div id="overlay" style="z-index: 99;"></div>

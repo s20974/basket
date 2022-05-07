@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/popup.css">
+	<link rel="stylesheet" type="text/css" href="../css/teamInfoPage.css">
+	<link rel="stylesheet" type="text/css" href="../css/formStyle.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+	<link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
+</head>
+<body>
+
+	<input type="checkbox" id="check">
+	<div class="header">
+		<a href="#"><img src="../img/logo.png"></a>
+		<div class="nav">
+			<a href="../index.html">Home</a>
+			<a href="players.html">Players</a>
+			<a href="#">Clubs</a>
+		</div>
+		<label for="check">
+			<i class="fas fa-bars menu-button"></i>
+			<i class="fas fa-times close-button"></i>
+		</label>
+	</div>
+
+	<div class="content">
+		<div class="team_logo">
+			<img src="../img/lakers_logo.png">
+		</div>
+		<div class="team_info">
+			<p class="tean_name">
+				Los-Angeles Lakers <span> - LaL</span>
+			</p>
+			<p class="team_city">
+				- City: <span>Los-Angeles, California;</span>
+			</p>
+			<p class="team_city">
+				- Adress: <span>Staples Center;</span>
+			</p><br>
+			<div class="team_edit_buttons">
+				<button type="button" class="add_button" data-modal-target="#modal_edit_team">
+					<span class="button__text">Add Team</span>
+					<span class="button__icon">
+						<i class="fas fa-edit"></i>
+					</span>
+				</button>
+			</div>
+		</div>
+
+		<div class="team_players">
+			<table class="players">
+				<thead>
+					<tr>
+						<th>Img</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Telephone Number</th>
+						<th>Number</th>
+						<th>Salary</th>
+						<th>Days In Club</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th><img src="../img/lebron.png" width="70px"></th>
+						<td>LeBron</td>
+						<td>James</td>
+						<td>+123467</td>
+						<td>#6</td>
+						<td>$40mil</td>
+						<td>990</td>
+						<td>
+							<button class="player_delete" data-modal-target="#delete_player_from_team">Delete</button>
+							<a href="#" class="">
+								<div class="player_more_info">
+									More Info
+								</div>
+							</a>
+						</td>
+					</tr>
+
+					<tr>
+						<th><img src="../img/lebron.png" width="70px"></th>
+						<td>LeBron</td>
+						<td>James</td>
+						<td>+123467</td>
+						<td>#6</td>
+						<td>$40mil</td>
+						<td>990</td>
+						<td>
+							<button class="player_delete">Delete</button>
+							<a href="#" class="">
+								<div class="player_more_info">
+									More Info
+								</div>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<th><img src="../img/lebron.png" width="70px"></th>
+						<td>LeBron</td>
+						<td>James</td>
+						<td>+123467</td>
+						<td>#6</td>
+						<td>$40mil</td>
+						<td>990</td>
+						<td>
+							<button class="player_delete">Delete</button>
+							<a href="#" class="">
+								<div class="player_more_info">
+									More Info
+								</div>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="popup" id="modal_edit_team">
+		<div class="top">
+			<h2>Modal</h2>
+			<label for="player_edit" class="fas fa-times" data-modal-close></label>
+		</div>
+
+		<form class="form" name="edit_team_form" id="edit_team_form" onsubmit="return validateTeamEditForm(this)" method="post">
+			<div class="form-inner" id="form-inner">
+				<input type="text" placeholder="Name" onchange="removeErrorEditForm(this)">
+				<input type="text" placeholder="City" onchange="removeErrorEditForm(this)">
+				<input type="text" placeholder="Adress" onchange="removeErrorEditForm(this)">
+				<input type="text" placeholder="Short Name" id="short_name" onchange="removeErrorEditForm(this)">
+			</div>
+			<div class="line"></div>
+			<div class="errors_info" id="errors_info_edit" style="font-size: 12px;"></div><br>
+			<div class="errors_info" id="errors_info_edit_sn" style="font-size: 12px;"></div>
+			<input type="submit" id="saveTeamEdit" class="close-btn" value="Save"></input>
+		</form>
+	</div>
+
+	<div class="popup_delete" id="delete_player_from_team" data-modal-close>
+		<div class="top">
+			<h2>Are you sure ?</h2>
+		</div>
+		<form class="form" name="delete_team_form" id="delete_team_form" method="post">
+			<input type="submit" id="delete_yes" class="delete_yes" value="Yes"></input>
+			<input type="submit" id="delete_no" class="delete_no" value="No"></input>
+		</form>
+	</div>
+
+	<div id="overlay"></div>
+
+	<script src="../scripts/team_info.js"></script>
+</body>
+</html>
